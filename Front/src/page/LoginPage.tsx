@@ -1,5 +1,23 @@
+import { testApi } from '../api/Test';
+import React, {useState} from 'react'
+
 const LoginPage = () => {
     
+    const [apiResponse, setApiResponse] = useState('');
+
+    const doTest = async () => {
+        await testApi(({data}) => {
+          const result = data as string;
+          setApiResponse(result);
+        }, 
+        (error) => {});
+    }
+
+    React.useEffect(() => {
+        doTest();
+    }, []);
+    
+
     return (
         <>
             <div
@@ -8,6 +26,10 @@ const LoginPage = () => {
             </div>
 
             <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center z-0" style={{ backgroundImage: `url('${import.meta.env.VITE_S3_URL}Introduce/bgggg.png')`, cursor: `url('${import.meta.env.VITE_S3_URL}MousePointer/navigation_small.png'), auto` }}>
+                <div className="api-response">
+                    {apiResponse}
+                </div>
+                
                 <div className="text-center z-0">
                     <div>
                     <h1 className="text-6xl font-bold text-[#fff] font-['passero-one']">Explore New Language with</h1>
