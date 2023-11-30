@@ -15,6 +15,7 @@ public class UserController {
 
     @GetMapping("")
     public String test() {
+        log.info("test");
         return "test";
     }
 }
