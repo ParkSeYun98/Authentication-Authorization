@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     IMAGE_NAME_FE = "test_image"
-                    CONTAINER_NAME_FE = "test_Dev"
+                    CONTAINER_NAME_FE = "Test_Dev"
                     APPLICATION_ENV_PATH = "/usr/react"
                     PROJECT_DIR_FE = "Front"
                 }
